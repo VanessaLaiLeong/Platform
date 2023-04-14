@@ -20,6 +20,7 @@ namespace Plat5
         int jumpCounter = 0;
         string jumpDirection = "down";
         int gravity = 8;
+        int platformSpeed = 10;
 
         Rectangle rect1 = new Rectangle(10, 10, 50, 50); // create first rectangle
         Rectangle rect2 = new Rectangle(30, 30, 50, 50); // create second rectangle
@@ -36,7 +37,7 @@ namespace Plat5
             if (e.KeyCode == Keys.Left)
             {
                 left = true;
-                playerSpeed = -10;
+                playerSpeed = 10;
             }
 
             //direita
@@ -108,18 +109,6 @@ namespace Plat5
             player.BackColor = Color.Transparent;
 
 
-
-
-
-            //player.Image = Image.FromFile("d:\\aulas atec\\pacheco\\jogoplat4\\jogoplat4\\resources\\gir.png");
-            //player.SizeMode = PictureBoxSizeMode.StretchImage;
-            //Bitmap bmp = new Bitmap(player.Image);
-
-            //// Set the transparent color to make it transparent
-            //bmp.MakeTransparent(Color.White);
-
-            //// Set the bitmap as the new image of the PictureBox control
-            //player.Image = bmp;
         }
 
         private void gameTime(object sender, EventArgs e)
@@ -133,13 +122,29 @@ namespace Plat5
 
             if (left == true && player.Left > 50 && !rightColision)
             {
-                player.Left += playerSpeed; // variavel entra como -10
+                player.Left -= playerSpeed;
+                
             }
 
             if (right == true && player.Left + (player.Width + 50) < this.ClientSize.Width && !leftColision)
             {
-                player.Left += playerSpeed; //variavel entra como 10
+                player.Left += playerSpeed;
+                
             }
+
+            if (left == true && player.Left > 50 && !rightColision)
+            {
+                movePlatforms("left");
+
+            }
+
+            if (right == true && player.Left + (player.Width + 50) < this.ClientSize.Width && !leftColision )
+            {
+                movePlatforms("right");
+
+            }
+
+
 
             leftColision = false;
             rightColision = false;
@@ -216,51 +221,7 @@ namespace Plat5
                         }
                     }
 
-                    //    label1.Text = "colisao2";
-                    //    // Check for right collision
-                    //    if (rect1.Left < rect2.Right && rect1.Left > rect2.Left && rect1.Bottom > rect2.Top && rect1.Top < rect2.Bottom)
-                    //    {
-                    //        label1.Text = "colisao";
-                    //        rightColision = true;
-                    //        player.BackColor = Color.White;
-
-                    //        // Right collision detected
-                    //        // Add code to handle the right collision here
-                    //    }
-
-                    //    if (rect1.Right > rect2.Left && rect1.Right < rect2.Right && rect1.Bottom > rect2.Top && rect1.Top < rect2.Bottom)
-                    //    {
-                    //        label1.Text = "colisao";
-                    //        leftColision = true;
-                    //        player.BackColor = Color.Red;
-                    //        // Left collision detected
-                    //        // Add code to handle the left collision here
-                    //    }
-
-                    //    // Check for top collision
-                    //    if (rect1.Bottom > rect2.Top && rect1.Bottom < rect2.Bottom && rect1.Right > rect2.Left && rect1.Left < rect2.Right)
-                    //    {
-                    //        player.Top = control.Top - player.Height;
-                    //        label1.Text = rect1.Right.ToString();
-                    //        player.BackColor = Color.YellowGreen;
-                    //        break;
-
-                    //        // Top collision detected
-                    //        // Add code to handle the top collision here
-                    //    }
-
-
-                    //    // Check for bottom collision
-                    //    if (rect1.Top < rect2.Bottom && rect1.Top > rect2.Top && rect1.Right > rect2.Left && rect1.Left < rect2.Right)
-                    //    {
-                    //        label1.Text = "rabo";
-                    //        jumpDirection = "down";
-                    //        player.BackColor = Color.Gainsboro;
-                    //        // Bottom collision detected
-                    //        // Add code to handle the bottom collision here
-                    //    }
-                    //}
-                    //else gravity = 8;
+                    
                 }
 
 
@@ -274,6 +235,26 @@ namespace Plat5
 
 
         }
+
+        private void movePlatforms(string direction)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox && (string)control.Tag == "platform")
+                {
+                    if (direction == "left")
+                    {
+                        control.Left += platformSpeed;
+                    }
+
+                    if (direction == "right")
+                    {
+                        control.Left -= platformSpeed;
+                    }
+                }
+            }
+        }
+
     }
 
 }
