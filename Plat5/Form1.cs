@@ -109,6 +109,8 @@ namespace Plat5
             player.BackColor = Color.Transparent;
 
 
+
+
         }
 
         private void gameTime(object sender, EventArgs e)
@@ -120,28 +122,24 @@ namespace Plat5
             }
 
 
-            if (left == true && player.Left > 50 && !rightColision)
+            if (left == true && player.Left > 200 && !rightColision)
             {
-                player.Left -= playerSpeed;
-                
+                player.Left -= playerSpeed; 
             }
 
-            if (right == true && player.Left + (player.Width + 50) < this.ClientSize.Width && !leftColision)
+            if (right == true && player.Left + (player.Width + 200) < this.ClientSize.Width && !leftColision)
             {
-                player.Left += playerSpeed;
-                
+                player.Left += playerSpeed; 
             }
 
-            if (left == true && player.Left > 50 && !rightColision)
+            if (left == true && back.Left > 0 && !rightColision)
             {
-                movePlatforms("left");
-
+                movePlatforms("playerLeft");
             }
 
-            if (right == true && player.Left + (player.Width + 50) < this.ClientSize.Width && !leftColision )
+            if (right == true && back.Left > -1400 && !leftColision)
             {
-                movePlatforms("right");
-
+                movePlatforms("playerRight");
             }
 
 
@@ -221,12 +219,16 @@ namespace Plat5
                         }
                     }
 
-                    
+                   
                 }
 
 
 
+
+
             }
+
+
 
 
 
@@ -238,25 +240,28 @@ namespace Plat5
 
         private void movePlatforms(string direction)
         {
+
             foreach (Control control in this.Controls)
             {
-                if (control is PictureBox && (string)control.Tag == "platform")
+                if (control is PictureBox && (string)control.Tag == "platform" )
                 {
-                    if (direction == "left")
+
+                    if (direction == "playerLeft")
                     {
                         control.Left += platformSpeed;
                     }
-
-                    if (direction == "right")
+                    if (direction == "playerRight")
                     {
                         control.Left -= platformSpeed;
                     }
+
+
                 }
             }
+
+
+
         }
-
-        //anananana
-
     }
 
 }
