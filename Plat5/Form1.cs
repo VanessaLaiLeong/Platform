@@ -15,14 +15,14 @@ namespace Plat5
         bool left, right;
         int playerSpeed = 0;
         int jumpHeight = 200;
-        int jumpSpeed = 10;
+        int jumpSpeed = 20;
         bool isJumping = false, rightColision = false, leftColision = false, topColision = false;
         int jumpCounter = 0;
         string jumpDirection = "down";
-        int gravity = 8;
+        int gravity = 15;
         int platformSpeed = 10;
-
-        Rectangle rect1 = new Rectangle(10, 10, 50, 50); // create first rectangle
+        int initPos = 10;
+        Rectangle rect1 = new Rectangle(0, 0, 50, 50); // create first rectangle
         Rectangle rect2 = new Rectangle(30, 30, 50, 50); // create second rectangle
 
 
@@ -122,32 +122,38 @@ namespace Plat5
             }
 
 
-            if (left == true && player.Left > 200 && !rightColision)
+            if (left == true && player.Left > 30 && !rightColision)
             {
                 player.Left -= playerSpeed; 
             }
 
-            if (right == true && player.Left + (player.Width + 200) < this.ClientSize.Width && !leftColision)
+            if (right == true && player.Left + (player.Width + 60) < this.ClientSize.Width && !leftColision)
             {
                 player.Left += playerSpeed; 
             }
 
-            if (left == true && back.Left > 0 && !rightColision)
+            if (left == true && !rightColision)
             {
                 movePlatforms("playerLeft");
             }
 
-            if (right == true && back.Left > -1400 && !leftColision)
+            if (right == true && !leftColision)
             {
                 movePlatforms("playerRight");
             }
 
 
-
+            rect1.Y += gravity;
             leftColision = false;
             rightColision = false;
+           if(Controls.Cast<Control>()
+                .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
+                .ToList().Count == 0)
             topColision = false;
-
+            
+            label1.Text = (Controls.Cast<Control>()
+                .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
+                .ToList()).Count.ToString();
 
             if (isJumping)
             {
@@ -219,7 +225,7 @@ namespace Plat5
                         }
                     }
 
-                   
+                 
                 }
 
 
