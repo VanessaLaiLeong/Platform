@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Plat5
 {
-    public partial class Form1 : Form
+    public partial class MainGame : Form
     {
         bool left, right;
         int playerSpeed = 0;
@@ -19,8 +19,9 @@ namespace Plat5
         bool isJumping = false, rightColision = false, leftColision = false, topColision = false;
         int jumpCounter = 0;
         string jumpDirection = "down";
-        int gravity = 15;
+        int gravity = 15; 
         int platformSpeed = 10;
+
         int initPos = 10;
         Rectangle rect1 = new Rectangle(0, 0, 50, 50); // create first rectangle
         Rectangle rect2 = new Rectangle(30, 30, 50, 50); // create second rectangle
@@ -56,25 +57,20 @@ namespace Plat5
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void player_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void platform_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void keyUp(object sender, KeyEventArgs e)
         {
@@ -100,7 +96,7 @@ namespace Plat5
             }
         }
 
-        public Form1()
+        public MainGame()
         {
             InitializeComponent();
             //Set the Parent property of the PictureBox to be the parent control
@@ -134,18 +130,21 @@ namespace Plat5
 
             if (left == true && !rightColision)
             {
-                movePlatforms("playerLeft");
+                movePlatforms("platformRight");
+                moveItems("itemRight");
             }
 
             if (right == true && !leftColision)
             {
-                movePlatforms("playerRight");
+                movePlatforms("platformLeft");
+                moveItems("itemLeft");
             }
 
 
             rect1.Y += gravity;
             leftColision = false;
             rightColision = false;
+
            if(Controls.Cast<Control>()
                 .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
                 .ToList().Count == 0)
@@ -200,7 +199,7 @@ namespace Plat5
 
                             if (rect1.X < rect2.X) //esquerda
                             {
-                                rect1.X -= intersection.Width;
+                                rect1.X -= intersection.Width;//para nao ir para dentro
                                 leftColision = true;
                             }
                             else  //direita
@@ -236,12 +235,6 @@ namespace Plat5
 
 
 
-
-
-
-
-
-
         }
 
         private void movePlatforms(string direction)
@@ -252,11 +245,36 @@ namespace Plat5
                 if (control is PictureBox && (string)control.Tag == "platform" )
                 {
 
-                    if (direction == "playerLeft")
+                    if (direction == "platformRight")
                     {
                         control.Left += platformSpeed;
                     }
-                    if (direction == "playerRight")
+                    if (direction == "platformLeft")
+                    {
+                        control.Left -= platformSpeed;
+                    }
+
+
+                }
+            }
+
+
+
+        }
+
+        private void moveItems(string direction)
+        {
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox && (string)control.Tag == "flower")
+                {
+
+                    if (direction == "itemRight")
+                    {
+                        control.Left += platformSpeed;
+                    }
+                    if (direction == "itemLeft")
                     {
                         control.Left -= platformSpeed;
                     }
