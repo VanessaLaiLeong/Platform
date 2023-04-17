@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rules.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainGame.resx">
       <DependentUpon>MainGame.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +130,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\flower.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bk2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9f8Pi2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bk2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bk2-min.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s4m_ur4i-bg_clouds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s4m_ur4i-bg_clouds1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

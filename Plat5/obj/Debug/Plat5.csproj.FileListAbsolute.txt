@@ -21,3 +21,4 @@ D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.exe
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.pdb
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.Menu.resources
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.MainGame.resources
+D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.Form1.resources

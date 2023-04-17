@@ -63,9 +63,49 @@ namespace Plat5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _9f8Pi2 {
+            get {
+                object obj = ResourceManager.GetObject("9f8Pi2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bk {
             get {
                 object obj = ResourceManager.GetObject("bk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bk2 {
+            get {
+                object obj = ResourceManager.GetObject("bk2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bk2_min {
+            get {
+                object obj = ResourceManager.GetObject("bk2-min", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bk21 {
+            get {
+                object obj = ResourceManager.GetObject("bk21", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +156,26 @@ namespace Plat5.Properties {
         internal static System.Drawing.Bitmap player2__1_ {
             get {
                 object obj = ResourceManager.GetObject("player2 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap s4m_ur4i_bg_clouds {
+            get {
+                object obj = ResourceManager.GetObject("s4m_ur4i-bg_clouds", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap s4m_ur4i_bg_clouds1 {
+            get {
+                object obj = ResourceManager.GetObject("s4m_ur4i-bg_clouds1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
