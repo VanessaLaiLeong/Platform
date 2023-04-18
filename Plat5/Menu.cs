@@ -24,7 +24,7 @@ namespace Plat5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainGame form = new MainGame();
+            GameLv1 form = new GameLv1();
             form.Show();
 
             this.Hide();

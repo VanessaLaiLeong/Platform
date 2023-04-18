@@ -1,6 +1,6 @@
 ﻿namespace Plat5
 {
-    partial class Form1
+    partial class GameLv1
     {
         /// <summary>
         /// Required designer variable.
@@ -54,8 +54,9 @@
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
-            this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.lb_lives = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -78,14 +79,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
-            this.pictureBox3.Location = new System.Drawing.Point(1, 402);
+            this.pictureBox3.Location = new System.Drawing.Point(72, 402);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(741, 50);
             this.pictureBox3.TabIndex = 24;
@@ -96,7 +97,7 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::Plat5.Properties.Resources.flower;
-            this.pictureBox7.Location = new System.Drawing.Point(135, 82);
+            this.pictureBox7.Location = new System.Drawing.Point(105, 83);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(39, 41);
             this.pictureBox7.TabIndex = 25;
@@ -118,22 +119,23 @@
             this.lb_flower.AutoSize = true;
             this.lb_flower.BackColor = System.Drawing.Color.Transparent;
             this.lb_flower.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_flower.Location = new System.Drawing.Point(74, 20);
+            this.lb_flower.Location = new System.Drawing.Point(164, 9);
             this.lb_flower.Name = "lb_flower";
             this.lb_flower.Size = new System.Drawing.Size(19, 20);
             this.lb_flower.TabIndex = 28;
             this.lb_flower.Text = "0";
+            this.lb_flower.Click += new System.EventHandler(this.lb_flower_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 20);
+            this.label2.Location = new System.Drawing.Point(96, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 27;
-            this.label2.Text = "Flowers";
+            this.label2.Text = "Flowers:";
             // 
             // timer1
             // 
@@ -154,7 +156,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
-            this.pictureBox2.Location = new System.Drawing.Point(78, 139);
+            this.pictureBox2.Location = new System.Drawing.Point(73, 130);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(487, 50);
             this.pictureBox2.TabIndex = 30;
@@ -166,7 +168,7 @@
             this.pictureBox4.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
             this.pictureBox4.Location = new System.Drawing.Point(1625, 402);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(440, 50);
+            this.pictureBox4.Size = new System.Drawing.Size(366, 50);
             this.pictureBox4.TabIndex = 31;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "platform";
@@ -206,7 +208,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::Plat5.Properties.Resources.flower;
-            this.pictureBox9.Location = new System.Drawing.Point(224, 82);
+            this.pictureBox9.Location = new System.Drawing.Point(194, 83);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(39, 41);
             this.pictureBox9.TabIndex = 35;
@@ -217,7 +219,7 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox10.Image = global::Plat5.Properties.Resources.flower;
-            this.pictureBox10.Location = new System.Drawing.Point(307, 82);
+            this.pictureBox10.Location = new System.Drawing.Point(277, 83);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(39, 41);
             this.pictureBox10.TabIndex = 36;
@@ -228,7 +230,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox11.Image = global::Plat5.Properties.Resources.flower;
-            this.pictureBox11.Location = new System.Drawing.Point(403, 82);
+            this.pictureBox11.Location = new System.Drawing.Point(373, 83);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(39, 41);
             this.pictureBox11.TabIndex = 37;
@@ -239,7 +241,7 @@
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox12.Image = global::Plat5.Properties.Resources.flower;
-            this.pictureBox12.Location = new System.Drawing.Point(482, 82);
+            this.pictureBox12.Location = new System.Drawing.Point(452, 83);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(39, 41);
             this.pictureBox12.TabIndex = 38;
@@ -345,33 +347,44 @@
             this.pictureBox21.TabStop = false;
             this.pictureBox21.Tag = "flower";
             // 
-            // pictureBox22
-            // 
-            this.pictureBox22.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox22.Location = new System.Drawing.Point(1990, -5);
-            this.pictureBox22.Name = "pictureBox22";
-            this.pictureBox22.Size = new System.Drawing.Size(68, 401);
-            this.pictureBox22.TabIndex = 48;
-            this.pictureBox22.TabStop = false;
-            this.pictureBox22.Tag = "platform";
-            // 
             // pictureBox23
             // 
-            this.pictureBox23.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox23.Location = new System.Drawing.Point(0, 12);
+            this.pictureBox23.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
+            this.pictureBox23.Location = new System.Drawing.Point(-4, 25);
             this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(68, 384);
+            this.pictureBox23.Size = new System.Drawing.Size(78, 427);
             this.pictureBox23.TabIndex = 49;
             this.pictureBox23.TabStop = false;
             this.pictureBox23.Tag = "platform";
             // 
-            // Form1
+            // pictureBox22
+            // 
+            this.pictureBox22.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
+            this.pictureBox22.Location = new System.Drawing.Point(1986, 9);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(91, 443);
+            this.pictureBox22.TabIndex = 50;
+            this.pictureBox22.TabStop = false;
+            this.pictureBox22.Tag = "platform";
+            // 
+            // lb_lives
+            // 
+            this.lb_lives.AutoSize = true;
+            this.lb_lives.BackColor = System.Drawing.Color.Transparent;
+            this.lb_lives.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_lives.Location = new System.Drawing.Point(255, 9);
+            this.lb_lives.Name = "lb_lives";
+            this.lb_lives.Size = new System.Drawing.Size(0, 20);
+            this.lb_lives.TabIndex = 52;
+            // 
+            // GameLv1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(665, 450);
+            this.ClientSize = new System.Drawing.Size(664, 450);
+            this.Controls.Add(this.lb_lives);
             this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.pictureBox20);
@@ -399,7 +412,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox23);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "GameLv1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyDown);
@@ -426,8 +439,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,7 +473,8 @@
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox21;
-        private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.Label lb_lives;
     }
 }

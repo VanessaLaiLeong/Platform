@@ -8,131 +8,51 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Plat5
 {
-    public partial class MainGame : Form
+    
+    public partial class GameLv1 : Form
     {
+
+        //GameLives lives;
         bool left, right;
         int playerSpeed = 0;
         int jumpHeight = 200;
-        int jumpSpeed = 20;
-        bool isJumping = false, rightColision = false, leftColision = false, topColision = false;
+        int jumpSpeed = 10;
+        bool isJumping = false, rightColision = false, leftColision = false, hasGravity = true;
         int jumpCounter = 0;
         string jumpDirection = "down";
-        int gravity = 15; 
-        int platformSpeed = 10;
+        int gravity = 15;
+        int itemSpeed = 5;
         int flowers = 0;
+        
 
 
         int initPos = 10;
         Rectangle rect1 = new Rectangle(30, 30, 50, 50); // create first rectangle
         Rectangle rect2 = new Rectangle(30, 30, 50, 50); // create second rectangle
 
-
-        private void player_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void keyDown(object sender, KeyEventArgs e)
-        {
-            //esquerda
-            if (e.KeyCode == Keys.Left)
-            {
-                left = true;
-                playerSpeed = 10;
-            }
-
-            //direita
-            if (e.KeyCode == Keys.Right)
-
-            {
-                right = true;
-                playerSpeed = 10;
-            }
-
-            //saltar
-            if (e.KeyCode == Keys.Space && !isJumping)
-            {
-                isJumping = true;
-                jumpDirection = "up";
-            }
-        }
-
-        
-
-        private void player_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-
-        private void keyUp(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Left)
-            {
-                left = false;
-                playerSpeed = 0;
-
-            }
-
-            if (e.KeyCode == Keys.Right)
-            {
-                right = false;
-                playerSpeed = 0;
-
-            }
-
-            if (e.KeyCode == Keys.Space && !isJumping)
-            {
-                isJumping = false;
-                jumpDirection = "down";
-            }
-        }
-
-        private void MainGame_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public MainGame()
-        {
-            InitializeComponent();
-            //Set the Parent property of the PictureBox to be the parent control
-            player.Parent = this;
-            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
-            player.BackColor = Color.Transparent;
-
-
-
-
-        }
-
         private void gameTime(object sender, EventArgs e)
         {
-            // se nao estiver a saltar ou se nao estiver por cima de uma plataforma a gravidade está sempre a atuar
-            if (!isJumping && !topColision)
+
+            lb_lives.Text = $"Lives!!!: {3}";
+
+            // se nao estiver a saltar se a flag da gravidade estiver a true ou seja que nao está em colisao com nenhuma plataforma aplica gravi
+            if (isJumping==false && hasGravity==true)
             {
-                //player.Top += gravity;
+                player.Top += gravity;
             }
 
 
-            if (left == true && player.Left > 30 && !rightColision)
+            if (left == true && player.Left > 200 && !rightColision)
             {
-                player.Left -= playerSpeed; 
+                player.Left -= playerSpeed;
             }
 
-            if (right == true && player.Left + (player.Width + 60) < this.ClientSize.Width && !leftColision)
+            if (right == true && player.Left + (player.Width + 200) < this.ClientSize.Width && !leftColision)
             {
-                player.Left += playerSpeed; 
+                player.Left += playerSpeed;
             }
 
             if (left == true && !rightColision)
@@ -148,16 +68,16 @@ namespace Plat5
             }
 
 
-            rect1.Y += gravity;
+            rect1.Y += gravity; //aplica continuamente gravidade no retangulo para verificar a colisao
             leftColision = false;
             rightColision = false;
 
-           //if(Controls.Cast<Control>()
-           //     .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
-           //     .ToList().Count == 0)
-           // topColision = false;
-            
-           
+            if (Controls.Cast<Control>()
+                 .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
+                 .ToList().Count == 0) //se nao estiver em colisao com a plataforma volta a ter gavidade
+                  hasGravity = true;
+
+
 
             if (isJumping)
             {
@@ -189,7 +109,7 @@ namespace Plat5
 
             rect1 = player.Bounds; // rectangulo fica com as dimensoes da picturebox
 
-
+            
 
             foreach (Control control in this.Controls) //todos os objetos 
             {
@@ -245,8 +165,8 @@ namespace Plat5
                             if (rect1.Y < rect2.Y) // por cima da plataforma
                             {
                                 player.Top = control.Top - player.Height;
-                                topColision = true;
-                                rect1.Y -= intersection.Height;
+                                hasGravity = false; //deixa de ter gravidade
+                                rect1.Y-= intersection.Height;
                             }
                             else // por baixo da plataforma
                             {
@@ -275,25 +195,127 @@ namespace Plat5
 
             }
 
+            if (rect1.Y > this.ClientSize.Height)
+            {
+                timer1.Stop();
+                int resposta = Convert.ToInt32(MessageBox.Show("Queres iniciar de novo?", "Mensagem",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question));
+
+                if (resposta == 6)
+                {
+                    MessageBox.Show("Restart");
+                    restartGame();
+
+                }
+                else if (resposta == 7)
+                {
+                    Gravar form = new Gravar();
+                    form.Show();
+
+                    this.Hide();
+                }
+                
+                
+                
+                
+
+            }
+
 
 
         }
+
+        public GameLv1()
+        {
+            InitializeComponent();
+            //Set the Parent property of the PictureBox to be the parent control
+            player.Parent = this;
+            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
+            player.BackColor = Color.Transparent;
+
+        }
+
+
+        private void keyDown(object sender, KeyEventArgs e)
+        {
+            //esquerda
+            if (e.KeyCode == Keys.Left)
+            {
+                left = true;
+                playerSpeed = 8;
+            }
+
+            //direita
+            if (e.KeyCode == Keys.Right)
+
+            {
+                right = true;
+                playerSpeed = 8;
+            }
+
+            //saltar
+            if (e.KeyCode == Keys.Space && !isJumping)
+            {
+                isJumping = true;
+                jumpDirection = "up";
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_flower_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void keyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Left)
+            {
+                left = false;
+                playerSpeed = 0;
+
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                right = false;
+                playerSpeed = 0;
+
+            }
+
+            if (e.KeyCode == Keys.Space && !isJumping)
+            {
+                isJumping = false;
+                jumpDirection = "down";
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void movePlatforms(string direction)
         {
 
             foreach (Control control in this.Controls)
             {
-                if (control is PictureBox && (string)control.Tag == "platform" )
+                if (control is PictureBox && (string)control.Tag == "platform")
                 {
 
                     if (direction == "platformRight")
                     {
-                        control.Left += platformSpeed;
+                        control.Left += itemSpeed;
                     }
                     if (direction == "platformLeft")
                     {
-                        control.Left -= platformSpeed;
+                        control.Left -= itemSpeed;
                     }
 
 
@@ -309,16 +331,16 @@ namespace Plat5
 
             foreach (Control control in this.Controls)
             {
-                if (control is PictureBox /*&& (string)control.Tag == "flower"*/)
+                if (control is PictureBox && (string)control.Tag == "flower")
                 {
 
                     if (direction == "itemRight")
                     {
-                        control.Left += platformSpeed;
+                        control.Left += itemSpeed;
                     }
                     if (direction == "itemLeft")
                     {
-                        control.Left -= platformSpeed;
+                        control.Left -= itemSpeed;
                     }
 
 
@@ -328,6 +350,41 @@ namespace Plat5
 
 
         }
-    }
 
+        private void restartGame()
+        {
+
+            //lives -= 1;
+
+            //// Update the lives label with the new lives count
+            //lb_lives.Text = $"Lives: {lives}";
+
+            //if (lives == 0)
+            //{
+                
+            //    MessageBox.Show("Game over! You ran out of lives.");
+            //    Application.Exit();
+            //}
+            //else
+            //{
+
+                
+
+            //    GameLv1 newForm = new GameLv1();
+            //    newForm.Show();
+
+            //    this.Hide();
+
+                
+            //}
+
+            GameLv1 newForm = new GameLv1();
+            newForm.Show();
+
+            this.Hide();
+
+
+
+        }
+    }
 }
