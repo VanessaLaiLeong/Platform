@@ -63,6 +63,16 @@ namespace Plat5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _59814 {
+            get {
+                object obj = ResourceManager.GetObject("59814", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _9f8Pi2 {
             get {
                 object obj = ResourceManager.GetObject("9f8Pi2", resourceCulture);
@@ -106,6 +116,16 @@ namespace Plat5.Properties {
         internal static System.Drawing.Bitmap bk21 {
             get {
                 object obj = ResourceManager.GetObject("bk21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap casa {
+            get {
+                object obj = ResourceManager.GetObject("casa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

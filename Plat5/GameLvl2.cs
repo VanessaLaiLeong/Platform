@@ -9,17 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Plat5
 {
-    
-    public partial class GameLv1 : Form
+    public partial class GameLvl2 : Form
     {
-        
 
-            
 
-        
         bool left, right;
         int playerSpeed = 0;
         int jumpHeight = 200;
@@ -30,22 +25,55 @@ namespace Plat5
         int gravity = 15;
         int itemSpeed = 5;
         int flowers = 0;
+
+
+
+        
+        Rectangle rect1 = new Rectangle(30, 30, 50, 50);
+        Rectangle rect2 = new Rectangle(30, 30, 50, 50);
+
         
 
+        public GameLvl2()
+        {
+            InitializeComponent();
 
-        int initPos = 10;
-        Rectangle rect1 = new Rectangle(30, 30, 50, 50); 
-        Rectangle rect2 = new Rectangle(30, 30, 50, 50); 
-         
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "flower.txt");
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string content = reader.ReadToEnd();
+                lb_flower.Text = content;
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+
+                    writer.Write("");
+                    writer.Close();
+                }
+
+            }
+
+            InitializeComponent();
+            //Set the Parent property of the PictureBox to be the parent control
+            player.Parent = this;
+            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
+            player.BackColor = Color.Transparent;
+        }
+
+        private void pictureBox26_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
         private void gameTime(object sender, EventArgs e)
         {
 
-            
+
 
             // se nao estiver a saltar se a flag da gravidade estiver a true ou seja que nao está em colisao com nenhuma plataforma aplica gravi
-            if (isJumping==false && hasGravity==true)
+            if (isJumping == false && hasGravity == true)
             {
                 player.Top += gravity;
             }
@@ -81,7 +109,7 @@ namespace Plat5
             if (Controls.Cast<Control>()
                  .Where(c => (string)c.Tag == "platform" && c.Bounds.IntersectsWith(rect1))
                  .ToList().Count == 0) //se nao estiver em colisao com a plataforma volta a ter gavidade
-                  hasGravity = true;
+                hasGravity = true;
 
 
 
@@ -115,7 +143,7 @@ namespace Plat5
 
             rect1 = player.Bounds; // rectangulo fica com as dimensoes da picturebox
 
-            
+
 
             foreach (Control control in this.Controls) //todos os objetos 
             {
@@ -172,7 +200,7 @@ namespace Plat5
                             {
                                 player.Top = control.Top - player.Height;
                                 hasGravity = false; //deixa de ter gravidade
-                                rect1.Y-= intersection.Height;
+                                rect1.Y -= intersection.Height;
                             }
                             else // por baixo da plataforma
                             {
@@ -238,10 +266,10 @@ namespace Plat5
                     string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "score.txt");
                     using (StreamWriter writer = new StreamWriter(filePath))
                     {
-                        
+
                         string myVariable = lb_flower.Text;
                         writer.WriteLine(myVariable);
-                        writer.Close(); 
+                        writer.Close();
                     }
 
                     Gravar form = new Gravar();
@@ -249,10 +277,10 @@ namespace Plat5
 
                     this.Hide();
                 }
-                
-                
-                
-                
+
+
+
+
 
             }
 
@@ -260,16 +288,7 @@ namespace Plat5
 
         }
 
-        public GameLv1()
-        {
-            InitializeComponent();
-            //Set the Parent property of the PictureBox to be the parent control
-            player.Parent = this;
-            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
-            player.BackColor = Color.Transparent;
-
-        }
-
+        
 
         private void keyDown(object sender, KeyEventArgs e)
         {
@@ -296,16 +315,6 @@ namespace Plat5
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lb_flower_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void keyUp(object sender, KeyEventArgs e)
         {
 
@@ -328,21 +337,6 @@ namespace Plat5
                 isJumping = false;
                 jumpDirection = "down";
             }
-        }
-
-        private void pictureBox9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -421,21 +415,21 @@ namespace Plat5
 
             //if (lives == 0)
             //{
-                
+
             //    MessageBox.Show("Game over! You ran out of lives.");
             //    Application.Exit();
             //}
             //else
             //{
 
-                
+
 
             //    GameLv1 newForm = new GameLv1();
             //    newForm.Show();
 
             //    this.Hide();
 
-                
+
             //}
 
             GameLv1 newForm = new GameLv1();

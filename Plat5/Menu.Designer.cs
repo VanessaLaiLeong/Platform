@@ -50,10 +50,10 @@
             // 
             this.btn_start.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btn_start.Font = new System.Drawing.Font("Segoe Script", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_start.Location = new System.Drawing.Point(81, 225);
+            this.btn_start.Location = new System.Drawing.Point(102, 225);
             this.btn_start.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(108, 46);
+            this.btn_start.Size = new System.Drawing.Size(166, 65);
             this.btn_start.TabIndex = 1;
             this.btn_start.Text = "Start";
             this.btn_start.UseVisualStyleBackColor = false;
@@ -66,7 +66,7 @@
             this.btn_rules.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_rules.Location = new System.Drawing.Point(329, 225);
             this.btn_rules.Name = "btn_rules";
-            this.btn_rules.Size = new System.Drawing.Size(108, 46);
+            this.btn_rules.Size = new System.Drawing.Size(142, 65);
             this.btn_rules.TabIndex = 2;
             this.btn_rules.Text = "Rules";
             this.btn_rules.UseVisualStyleBackColor = false;
@@ -78,7 +78,7 @@
             this.btn_leader_board.Font = new System.Drawing.Font("Segoe Script", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_leader_board.Location = new System.Drawing.Point(543, 225);
             this.btn_leader_board.Name = "btn_leader_board";
-            this.btn_leader_board.Size = new System.Drawing.Size(180, 46);
+            this.btn_leader_board.Size = new System.Drawing.Size(191, 65);
             this.btn_leader_board.TabIndex = 3;
             this.btn_leader_board.Text = "Leader Board";
             this.btn_leader_board.UseVisualStyleBackColor = false;
@@ -90,7 +90,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(834, 461);
             this.Controls.Add(this.btn_leader_board);
             this.Controls.Add(this.btn_rules);
             this.Controls.Add(this.btn_start);

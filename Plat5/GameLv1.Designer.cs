@@ -57,6 +57,7 @@
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.lb_lives = new System.Windows.Forms.Label();
+            this.home = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -81,12 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.home)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
-            this.pictureBox3.Location = new System.Drawing.Point(72, 402);
+            this.pictureBox3.Location = new System.Drawing.Point(73, 414);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(741, 50);
             this.pictureBox3.TabIndex = 24;
@@ -168,7 +170,7 @@
             this.pictureBox4.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
             this.pictureBox4.Location = new System.Drawing.Point(1625, 402);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(366, 50);
+            this.pictureBox4.Size = new System.Drawing.Size(366, 62);
             this.pictureBox4.TabIndex = 31;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "platform";
@@ -214,6 +216,7 @@
             this.pictureBox9.TabIndex = 35;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "flower";
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // pictureBox10
             // 
@@ -352,7 +355,7 @@
             this.pictureBox23.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
             this.pictureBox23.Location = new System.Drawing.Point(-4, 25);
             this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(78, 427);
+            this.pictureBox23.Size = new System.Drawing.Size(78, 439);
             this.pictureBox23.TabIndex = 49;
             this.pictureBox23.TabStop = false;
             this.pictureBox23.Tag = "platform";
@@ -360,9 +363,9 @@
             // pictureBox22
             // 
             this.pictureBox22.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
-            this.pictureBox22.Location = new System.Drawing.Point(1986, 9);
+            this.pictureBox22.Location = new System.Drawing.Point(1986, 23);
             this.pictureBox22.Name = "pictureBox22";
-            this.pictureBox22.Size = new System.Drawing.Size(91, 443);
+            this.pictureBox22.Size = new System.Drawing.Size(91, 481);
             this.pictureBox22.TabIndex = 50;
             this.pictureBox22.TabStop = false;
             this.pictureBox22.Tag = "platform";
@@ -377,13 +380,25 @@
             this.lb_lives.Size = new System.Drawing.Size(0, 20);
             this.lb_lives.TabIndex = 52;
             // 
+            // home
+            // 
+            this.home.BackColor = System.Drawing.Color.Transparent;
+            this.home.Image = global::Plat5.Properties.Resources.casa;
+            this.home.Location = new System.Drawing.Point(1866, 308);
+            this.home.Name = "home";
+            this.home.Size = new System.Drawing.Size(114, 102);
+            this.home.TabIndex = 53;
+            this.home.TabStop = false;
+            this.home.Tag = "home";
+            this.home.Click += new System.EventHandler(this.pictureBox24_Click);
+            // 
             // GameLv1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(664, 450);
+            this.ClientSize = new System.Drawing.Size(2506, 461);
             this.Controls.Add(this.lb_lives);
             this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.pictureBox19);
@@ -411,6 +426,7 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox23);
+            this.Controls.Add(this.home);
             this.DoubleBuffered = true;
             this.Name = "GameLv1";
             this.Text = "Form1";
@@ -441,6 +457,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.home)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,7 +468,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox player;
-        private System.Windows.Forms.Label lb_flower;
+        public System.Windows.Forms.Label lb_flower;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -476,5 +493,7 @@
         private System.Windows.Forms.PictureBox pictureBox23;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.Label lb_lives;
+        public GameLv1 game;
+        private System.Windows.Forms.PictureBox home;
     }
 }

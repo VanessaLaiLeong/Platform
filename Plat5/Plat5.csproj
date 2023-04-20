@@ -53,6 +53,12 @@
     <Compile Include="GameLv1.Designer.cs">
       <DependentUpon>GameLv1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameLvl2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameLvl2.Designer.cs">
+      <DependentUpon>GameLvl2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gravar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GameLv1.resx">
       <DependentUpon>GameLv1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameLvl2.resx">
+      <DependentUpon>GameLvl2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gravar.resx">
       <DependentUpon>Gravar.cs</DependentUpon>
@@ -152,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\s4m_ur4i-bg_clouds1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\59814.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casa.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

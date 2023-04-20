@@ -1,3 +1,5 @@
 <Game>
-  <player name="aaa" date="aaa" points="111" />  
+  <player name="aaa" score="8" />
+  <player name="bbb" score="15" />
+  <player name="vanessa" score="6" />
 </Game>

@@ -26,18 +26,39 @@ namespace Plat5
 
             XmlNodeList nodeList = doc.SelectNodes("/Game/player");
 
+            var sortedList = nodeList.Cast<XmlNode>()
+                         .OrderByDescending(x => int.Parse(x.Attributes["score"].Value));
+
             lb_board.Items.Clear();
 
-            foreach (XmlNode node in nodeList)
+            foreach (XmlNode node in sortedList)
             {
                 XmlElement element = node as XmlElement;
-                lb_board.Items.Add($"Nome: {node.Attributes["name"].Value} - Pontos: {node.Attributes["points"].Value} - Data: {node.Attributes["date"].Value} ");
+                lb_board.Items.Add($"Nome: {node.Attributes["name"].Value} - Score: {node.Attributes["score"].Value} ");
             }
 
 
         }
 
         private void lb_board_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
