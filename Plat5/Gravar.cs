@@ -48,11 +48,10 @@ namespace Plat5
 
             doc.Save("leaderBoard.xml");
 
-            //XmlWriterSettings settings = new XmlWriterSettings();
-            //settings.NewLineHandling = NewLineHandling.None;
-            //XmlWriter writer = XmlWriter.Create("leaderBoard.xml", settings);
-            //doc.Save(writer);
-            //writer.Close();
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
 
         }
 

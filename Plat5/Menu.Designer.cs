@@ -32,6 +32,7 @@
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_rules = new System.Windows.Forms.Button();
             this.btn_leader_board = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -84,6 +85,19 @@
             this.btn_leader_board.UseVisualStyleBackColor = false;
             this.btn_leader_board.Click += new System.EventHandler(this.btn_leader_board_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.Font = new System.Drawing.Font("Segoe Script", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(680, 384);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 65);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Sair";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,6 +105,7 @@
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(834, 461);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_leader_board);
             this.Controls.Add(this.btn_rules);
             this.Controls.Add(this.btn_start);
@@ -112,5 +127,6 @@
         private System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.Button btn_rules;
         private System.Windows.Forms.Button btn_leader_board;
+        private System.Windows.Forms.Button button1;
     }
 }
