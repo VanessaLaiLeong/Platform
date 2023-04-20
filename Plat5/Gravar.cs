@@ -15,14 +15,13 @@ namespace Plat5
 {
     public partial class Gravar : Form
     {
+        int flowers = 0;
         XmlDocument doc;
-        public Gravar()
+        public Gravar(int flowers)
         {
+            this.flowers = flowers;
             InitializeComponent();
             
-
-
-
 
         }
 
@@ -30,21 +29,8 @@ namespace Plat5
         {
             pn_gravar.Visible = false;
 
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "score.txt");
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string content = reader.ReadToEnd();
-                lbl_score.Text = content;
-                reader.Close();
-
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-
-                    writer.Write("");
-                    writer.Close();
-                }
-
-            }
+            string content = flowers.ToString();
+            lbl_score.Text = content;
 
         }
 
@@ -70,19 +56,23 @@ namespace Plat5
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void Gravar_Load(object sender, EventArgs e)
-        {
+        
 
+        
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
         }
     }
 }

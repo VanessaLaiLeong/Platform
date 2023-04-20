@@ -23,4 +23,5 @@ D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.Menu.resources
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.GameLv1.resources
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.LeaderBoard.resources
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.Gravar.resources
+D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.Rules.resources
 D:\Aulas ATEC\Pacheco\Platform\Plat5\obj\Debug\Plat5.GameLvl2.resources

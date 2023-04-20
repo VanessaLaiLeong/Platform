@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,11 +17,7 @@ namespace Plat5
     
     public partial class GameLv1 : Form
     {
-        
-
-            
-
-        
+       
         bool left, right;
         int playerSpeed = 0;
         int jumpHeight = 200;
@@ -27,17 +25,40 @@ namespace Plat5
         bool isJumping = false, rightColision = false, leftColision = false, hasGravity = true;
         int jumpCounter = 0;
         string jumpDirection = "down";
-        int gravity = 15;
+        int gravity = 10;
         int itemSpeed = 5;
         int flowers = 0;
-        
-
-
+        int nJumps = 0;
+        int dificulty;
+        private int currentLives;
         int initPos = 10;
         Rectangle rect1 = new Rectangle(30, 30, 50, 50); 
-        Rectangle rect2 = new Rectangle(30, 30, 50, 50); 
-         
+        Rectangle rect2 = new Rectangle(30, 30, 50, 50);
 
+        public GameLv1()
+        {
+            InitializeComponent();
+            //Set the Parent property of the PictureBox to be the parent control
+            player.Parent = this;
+            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
+            player.BackColor = Color.Transparent;
+
+        }
+
+        public GameLv1(int lives, int difculty)
+        {
+            InitializeComponent();
+            this.dificultyPanel.Visible = false;
+            this.dificultyPanel.Enabled = false;
+            this.hard.Visible = false;
+            this.hard.Enabled = false;
+            this.easy.Visible = false;
+            this.easy.Enabled = false;
+            this.dificulty = difculty;
+
+            this.currentLives = lives;
+
+        }
 
         private void gameTime(object sender, EventArgs e)
         {
@@ -108,16 +129,17 @@ namespace Plat5
 
                     if (jumpCounter <= 0)
                     {
+                        nJumps = 0;
                         isJumping = false;
                     }
                 }
-            }
+            } //saltar
 
             rect1 = player.Bounds; // rectangulo fica com as dimensoes da picturebox
 
             
 
-            foreach (Control control in this.Controls) //todos os objetos 
+            foreach (Control control in this.Controls) //verificacao das colisoes
             {
 
                 rect2 = control.Bounds;
@@ -176,7 +198,7 @@ namespace Plat5
                             }
                             else // por baixo da plataforma
                             {
-                                isJumping = false;
+                                jumpDirection="down";
 
                             }
                         }
@@ -198,21 +220,16 @@ namespace Plat5
 
                 lb_flower.Text = flowers.ToString();
 
+
+                
+
                 if (control is PictureBox && (string)control.Tag == "home")
                 {
                     if (rect1.IntersectsWith(rect2) && control.Visible == true)
-                    {
-                        //passagem no nr de flores para o prox nivel
-                        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "flower.txt");
-                        using (StreamWriter writer = new StreamWriter(filePath))
-                        {
+                    {   
+                     
 
-                            string myVariable = lb_flower.Text;
-                            writer.WriteLine(myVariable);
-                            writer.Close();
-                        }
-
-                        GameLvl2 form = new GameLvl2();
+                        GameLvl2 form = new GameLvl2(flowers, dificulty,currentLives);
                         form.Show();
 
                         this.Hide();
@@ -221,54 +238,55 @@ namespace Plat5
 
             }
 
-            if (rect1.Y > this.ClientSize.Height)
+            if (rect1.Y > this.ClientSize.Height)//verificacao do colisao com sair da janela para terminar o jogo
             {
-                timer1.Stop();
-                int resposta = Convert.ToInt32(MessageBox.Show("Queres iniciar de novo?", "Mensagem",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question));
-
-                if (resposta == 6)
+                
+                if (dificulty == 2)
                 {
-                    MessageBox.Show("Restart");
-                    restartGame();
-
+                    gameOver();
                 }
-                else if (resposta == 7) //gravar os scores
-                {
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "score.txt");
-                    using (StreamWriter writer = new StreamWriter(filePath))
+                if (dificulty == 1) {
+                    currentLives--;
+                    if (currentLives == 0) {
+                        gameOver();
+                    }
+                    else
                     {
                         
-                        string myVariable = lb_flower.Text;
-                        writer.WriteLine(myVariable);
-                        writer.Close(); 
+                        GameLv1 gameLv1= new GameLv1(currentLives, dificulty);
+                        gameLv1.Show();
+                        timer1.Stop();
+                        this.Hide();
                     }
-
-                    Gravar form = new Gravar();
-                    form.Show();
-
-                    this.Hide();
                 }
-                
-                
-                
-                
-
             }
 
-
-
-        }
-
-        public GameLv1()
-        {
-            InitializeComponent();
-            //Set the Parent property of the PictureBox to be the parent control
-            player.Parent = this;
-            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
-            player.BackColor = Color.Transparent;
+            lbl_lives.Text = currentLives.ToString();
 
         }
+
+        private void gameOver() {
+            timer1.Stop();
+            int resposta = Convert.ToInt32(MessageBox.Show("Queres iniciar de novo?", "Mensagem",
+                       MessageBoxButtons.YesNo, MessageBoxIcon.Question));
+
+            if (resposta == 6)
+            {
+                MessageBox.Show("Restart");
+                restartGame();
+
+            }
+            else if (resposta == 7) //gravar os scores
+            {
+
+                Gravar form = new Gravar(flowers);
+                form.Show();
+
+                this.Hide();
+            }
+        }
+
+      
 
 
         private void keyDown(object sender, KeyEventArgs e)
@@ -277,7 +295,7 @@ namespace Plat5
             if (e.KeyCode == Keys.Left)
             {
                 left = true;
-                playerSpeed = 8;
+                playerSpeed = 1;
             }
 
             //direita
@@ -285,7 +303,7 @@ namespace Plat5
 
             {
                 right = true;
-                playerSpeed = 8;
+                playerSpeed = 1;
             }
 
             //saltar
@@ -296,15 +314,6 @@ namespace Plat5
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lb_flower_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void keyUp(object sender, KeyEventArgs e)
         {
@@ -323,28 +332,15 @@ namespace Plat5
 
             }
 
-            if (e.KeyCode == Keys.Space && !isJumping)
+            if (e.KeyCode == Keys.Space && nJumps<2)
             {
-                isJumping = false;
-                jumpDirection = "down";
+                isJumping = true;
+                jumpDirection = "up";
+                nJumps++;
             }
         }
 
-        private void pictureBox9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
 
         private void movePlatforms(string direction)
         {
@@ -369,6 +365,19 @@ namespace Plat5
 
 
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) 
+        {
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
         }
 
         private void moveItems(string direction)
@@ -446,5 +455,40 @@ namespace Plat5
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dificulty = 2;
+            
+            GameLv1 gameLv1 = new GameLv1(1, dificulty);
+            gameLv1.Show();
+            this.Hide();
+            lbl_lives.Visible= false;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dificulty = 1;
+            
+            GameLv1 gameLv1= new GameLv1(3,dificulty);
+            gameLv1.Show();
+            this.Hide();
+
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+        
+
     }
 }

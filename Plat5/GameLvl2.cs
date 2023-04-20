@@ -13,8 +13,6 @@ namespace Plat5
 {
     public partial class GameLvl2 : Form
     {
-
-
         bool left, right;
         int playerSpeed = 0;
         int jumpHeight = 200;
@@ -22,47 +20,29 @@ namespace Plat5
         bool isJumping = false, rightColision = false, leftColision = false, hasGravity = true;
         int jumpCounter = 0;
         string jumpDirection = "down";
-        int gravity = 15;
+        int gravity = 10;
         int itemSpeed = 5;
-        int flowers = 0;
+        int flowers;
+        int nJumps = 0;
+        int dificulty;
+        int initialX;
+        int initialY;
+        int currentLives;
+        int initFlowers;
+        Rectangle rect1;
+        Rectangle rect2;
 
+      
 
-
-        
-        Rectangle rect1 = new Rectangle(30, 30, 50, 50);
-        Rectangle rect2 = new Rectangle(30, 30, 50, 50);
-
-        
-
-        public GameLvl2()
+        public GameLvl2(int flowers, int difculty, int lives)
         {
             InitializeComponent();
-
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "flower.txt");
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string content = reader.ReadToEnd();
-                lb_flower.Text = content;
-                reader.Close();
-
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-
-                    writer.Write("");
-                    writer.Close();
-                }
-
-            }
-
-            InitializeComponent();
-            //Set the Parent property of the PictureBox to be the parent control
-            player.Parent = this;
-            //// Set the TransparentColor property of the PictureBox to make a specific color transparent
-            player.BackColor = Color.Transparent;
-        }
-
-        private void pictureBox26_Click(object sender, EventArgs e)
-        {
+            this.dificulty = difculty;
+            this.currentLives = lives;
+            this.flowers = flowers;
+            this.initFlowers = flowers;
+            string content = this.flowers.ToString();
+            label1.Text = content;
 
         }
 
@@ -136,6 +116,7 @@ namespace Plat5
 
                     if (jumpCounter <= 0)
                     {
+                        nJumps = 0;
                         isJumping = false;
                     }
                 }
@@ -204,7 +185,7 @@ namespace Plat5
                             }
                             else // por baixo da plataforma
                             {
-                                isJumping = false;
+                                jumpDirection = "down";
 
                             }
                         }
@@ -224,23 +205,15 @@ namespace Plat5
                     }
                 }
 
-                lb_flower.Text = flowers.ToString();
+                label1.Text = flowers.ToString();
 
                 if (control is PictureBox && (string)control.Tag == "home")
                 {
                     if (rect1.IntersectsWith(rect2) && control.Visible == true)
                     {
-                        //passagem no nr de flores para o prox nivel
-                        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "flower.txt");
-                        using (StreamWriter writer = new StreamWriter(filePath))
-                        {
 
-                            string myVariable = lb_flower.Text;
-                            writer.WriteLine(myVariable);
-                            writer.Close();
-                        }
 
-                        GameLvl2 form = new GameLvl2();
+                        Gravar form = new Gravar(flowers);
                         form.Show();
 
                         this.Hide();
@@ -251,41 +224,82 @@ namespace Plat5
 
             if (rect1.Y > this.ClientSize.Height)
             {
-                timer1.Stop();
-                int resposta = Convert.ToInt32(MessageBox.Show("Queres iniciar de novo?", "Mensagem",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question));
-
-                if (resposta == 6)
+                if (dificulty == 2)
                 {
-                    MessageBox.Show("Restart");
-                    restartGame();
-
+                    gameOver();
                 }
-                else if (resposta == 7) //gravar os scores
+                if (dificulty == 1)
                 {
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "score.txt");
-                    using (StreamWriter writer = new StreamWriter(filePath))
+                    currentLives--;
+                    if (currentLives == 0)
+                    {
+                        gameOver();
+                    }
+                    else
                     {
 
-                        string myVariable = lb_flower.Text;
-                        writer.WriteLine(myVariable);
-                        writer.Close();
+                        GameLvl2 gameLv1 = new GameLvl2(initFlowers, dificulty, currentLives);
+                        gameLv1.Show();
+                        timer1.Stop();
+                        this.Hide();
                     }
-
-                    Gravar form = new Gravar();
-                    form.Show();
-
-                    this.Hide();
                 }
-
-
-
-
 
             }
 
+            lbl_lives.Text = currentLives.ToString();
 
 
+
+        }
+
+
+        private void gameOver()
+        {
+            timer1.Stop();
+            int resposta = Convert.ToInt32(MessageBox.Show("Queres iniciar de novo?", "Mensagem",
+                       MessageBoxButtons.YesNo, MessageBoxIcon.Question));
+
+            if (resposta == 6)
+            {
+                MessageBox.Show("Restart");
+                restartGame();
+
+            }
+            else if (resposta == 7) //gravar os scores
+            {
+
+                Gravar form = new Gravar(flowers);
+                form.Show();
+
+                this.Hide();
+            }
+        }
+
+
+
+        private void restartGame()
+        {
+            GameLv1 newForm = new GameLv1();
+            newForm.Show();
+
+            this.Hide();
+
+        }
+
+        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
         }
 
         
@@ -296,7 +310,7 @@ namespace Plat5
             if (e.KeyCode == Keys.Left)
             {
                 left = true;
-                playerSpeed = 8;
+                playerSpeed = 2;
             }
 
             //direita
@@ -304,7 +318,7 @@ namespace Plat5
 
             {
                 right = true;
-                playerSpeed = 8;
+                playerSpeed = 2;
             }
 
             //saltar
@@ -317,7 +331,6 @@ namespace Plat5
 
         private void keyUp(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Left)
             {
                 left = false;
@@ -332,37 +345,14 @@ namespace Plat5
 
             }
 
-            if (e.KeyCode == Keys.Space && !isJumping)
+            if (e.KeyCode == Keys.Space && nJumps < 2)
             {
-                isJumping = false;
-                jumpDirection = "down";
+                isJumping = true;
+                jumpDirection = "up";
+                nJumps++;
+
+
             }
-        }
-
-
-        private void movePlatforms(string direction)
-        {
-
-            foreach (Control control in this.Controls)
-            {
-                if (control is PictureBox && (string)control.Tag == "platform")
-                {
-
-                    if (direction == "platformRight")
-                    {
-                        control.Left += itemSpeed;
-                    }
-                    if (direction == "platformLeft")
-                    {
-                        control.Left -= itemSpeed;
-                    }
-
-
-                }
-            }
-
-
-
         }
 
         private void moveItems(string direction)
@@ -405,37 +395,26 @@ namespace Plat5
 
         }
 
-        private void restartGame()
+        private void movePlatforms(string direction)
         {
 
-            //lives -= 1;
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox && (string)control.Tag == "platform")
+                {
 
-            //// Update the lives label with the new lives count
-            //lb_lives.Text = $"Lives: {lives}";
-
-            //if (lives == 0)
-            //{
-
-            //    MessageBox.Show("Game over! You ran out of lives.");
-            //    Application.Exit();
-            //}
-            //else
-            //{
-
-
-
-            //    GameLv1 newForm = new GameLv1();
-            //    newForm.Show();
-
-            //    this.Hide();
+                    if (direction == "platformRight")
+                    {
+                        control.Left += itemSpeed;
+                    }
+                    if (direction == "platformLeft")
+                    {
+                        control.Left -= itemSpeed;
+                    }
 
 
-            //}
-
-            GameLv1 newForm = new GameLv1();
-            newForm.Show();
-
-            this.Hide();
+                }
+            }
 
 
 

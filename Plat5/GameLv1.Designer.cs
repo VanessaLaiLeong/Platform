@@ -58,6 +58,12 @@
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.lb_lives = new System.Windows.Forms.Label();
             this.home = new System.Windows.Forms.PictureBox();
+            this.dificultyPanel = new System.Windows.Forms.Panel();
+            this.hard = new System.Windows.Forms.Button();
+            this.easy = new System.Windows.Forms.Button();
+            this.lbl_lives = new System.Windows.Forms.Label();
+            this.lbl_vidas = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -83,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.home)).BeginInit();
+            this.dificultyPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -110,7 +117,7 @@
             // 
             this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Image = global::Plat5.Properties.Resources.player2__1_;
-            this.player.Location = new System.Drawing.Point(100, 330);
+            this.player.Location = new System.Drawing.Point(90, 376);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(39, 41);
             this.player.TabIndex = 26;
@@ -120,29 +127,28 @@
             // 
             this.lb_flower.AutoSize = true;
             this.lb_flower.BackColor = System.Drawing.Color.Transparent;
-            this.lb_flower.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_flower.Location = new System.Drawing.Point(164, 9);
+            this.lb_flower.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_flower.Location = new System.Drawing.Point(168, 10);
             this.lb_flower.Name = "lb_flower";
-            this.lb_flower.Size = new System.Drawing.Size(19, 20);
+            this.lb_flower.Size = new System.Drawing.Size(24, 27);
             this.lb_flower.TabIndex = 28;
             this.lb_flower.Text = "0";
-            this.lb_flower.Click += new System.EventHandler(this.lb_flower_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(96, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.Size = new System.Drawing.Size(78, 27);
             this.label2.TabIndex = 27;
             this.label2.Text = "Flowers:";
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.gameTime);
             // 
             // pictureBox1
@@ -174,7 +180,6 @@
             this.pictureBox4.TabIndex = 31;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "platform";
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox5
             // 
@@ -216,7 +221,6 @@
             this.pictureBox9.TabIndex = 35;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "flower";
-            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // pictureBox10
             // 
@@ -353,9 +357,9 @@
             // pictureBox23
             // 
             this.pictureBox23.BackgroundImage = global::Plat5.Properties.Resources.Terrain3;
-            this.pictureBox23.Location = new System.Drawing.Point(-4, 25);
+            this.pictureBox23.Location = new System.Drawing.Point(-4, 1);
             this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(78, 439);
+            this.pictureBox23.Size = new System.Drawing.Size(78, 463);
             this.pictureBox23.TabIndex = 49;
             this.pictureBox23.TabStop = false;
             this.pictureBox23.Tag = "platform";
@@ -375,7 +379,7 @@
             this.lb_lives.AutoSize = true;
             this.lb_lives.BackColor = System.Drawing.Color.Transparent;
             this.lb_lives.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_lives.Location = new System.Drawing.Point(255, 9);
+            this.lb_lives.Location = new System.Drawing.Point(261, 9);
             this.lb_lives.Name = "lb_lives";
             this.lb_lives.Size = new System.Drawing.Size(0, 20);
             this.lb_lives.TabIndex = 52;
@@ -390,7 +394,73 @@
             this.home.TabIndex = 53;
             this.home.TabStop = false;
             this.home.Tag = "home";
-            this.home.Click += new System.EventHandler(this.pictureBox24_Click);
+            // 
+            // dificultyPanel
+            // 
+            this.dificultyPanel.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
+            this.dificultyPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dificultyPanel.Controls.Add(this.hard);
+            this.dificultyPanel.Controls.Add(this.easy);
+            this.dificultyPanel.Location = new System.Drawing.Point(-4, 1);
+            this.dificultyPanel.Name = "dificultyPanel";
+            this.dificultyPanel.Size = new System.Drawing.Size(850, 474);
+            this.dificultyPanel.TabIndex = 54;
+            this.dificultyPanel.Tag = "dificultyPanel";
+            // 
+            // hard
+            // 
+            this.hard.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hard.Location = new System.Drawing.Point(248, 285);
+            this.hard.Name = "hard";
+            this.hard.Size = new System.Drawing.Size(316, 72);
+            this.hard.TabIndex = 1;
+            this.hard.Text = "HARD MODE";
+            this.hard.UseVisualStyleBackColor = true;
+            this.hard.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // easy
+            // 
+            this.easy.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.easy.Location = new System.Drawing.Point(248, 134);
+            this.easy.Name = "easy";
+            this.easy.Size = new System.Drawing.Size(316, 72);
+            this.easy.TabIndex = 0;
+            this.easy.Text = "NORMAL MODE";
+            this.easy.UseVisualStyleBackColor = true;
+            this.easy.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lbl_lives
+            // 
+            this.lbl_lives.AutoSize = true;
+            this.lbl_lives.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_lives.Font = new System.Drawing.Font("Segoe Script", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_lives.Location = new System.Drawing.Point(259, 7);
+            this.lbl_lives.Name = "lbl_lives";
+            this.lbl_lives.Size = new System.Drawing.Size(28, 31);
+            this.lbl_lives.TabIndex = 99;
+            this.lbl_lives.Text = "0";
+            // 
+            // lbl_vidas
+            // 
+            this.lbl_vidas.AutoSize = true;
+            this.lbl_vidas.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_vidas.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_vidas.Location = new System.Drawing.Point(201, 8);
+            this.lbl_vidas.Name = "lbl_vidas";
+            this.lbl_vidas.Size = new System.Drawing.Size(63, 27);
+            this.lbl_vidas.TabIndex = 98;
+            this.lbl_vidas.Text = "Vidas:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(747, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 27);
+            this.label1.TabIndex = 100;
+            this.label1.Text = "Nivel 1";
             // 
             // GameLv1
             // 
@@ -398,7 +468,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(2506, 461);
+            this.ClientSize = new System.Drawing.Size(834, 461);
+            this.Controls.Add(this.dificultyPanel);
             this.Controls.Add(this.lb_lives);
             this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.pictureBox19);
@@ -407,30 +478,34 @@
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox18);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.lb_flower);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox23);
+            this.Controls.Add(this.home);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox17);
-            this.Controls.Add(this.pictureBox12);
-            this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lb_flower);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.player);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox23);
-            this.Controls.Add(this.home);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox12);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.lbl_vidas);
+            this.Controls.Add(this.lbl_lives);
+            this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GameLv1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -458,6 +533,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.home)).EndInit();
+            this.dificultyPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,5 +571,11 @@
         private System.Windows.Forms.Label lb_lives;
         public GameLv1 game;
         private System.Windows.Forms.PictureBox home;
+        private System.Windows.Forms.Panel dificultyPanel;
+        private System.Windows.Forms.Button hard;
+        private System.Windows.Forms.Button easy;
+        private System.Windows.Forms.Label lbl_lives;
+        private System.Windows.Forms.Label lbl_vidas;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btn_yes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pn_gravar = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_score = new System.Windows.Forms.Label();
@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pn_gravar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             this.btn_yes.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_yes.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_yes.Location = new System.Drawing.Point(105, 131);
+            this.btn_yes.Location = new System.Drawing.Point(88, 125);
             this.btn_yes.Name = "btn_yes";
             this.btn_yes.Size = new System.Drawing.Size(124, 67);
             this.btn_yes.TabIndex = 1;
@@ -67,27 +67,28 @@
             this.btn_yes.UseVisualStyleBackColor = false;
             this.btn_yes.Click += new System.EventHandler(this.btn_yes_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(304, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 67);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Não";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // pn_gravar
             // 
             this.pn_gravar.BackColor = System.Drawing.Color.Transparent;
-            this.pn_gravar.Controls.Add(this.button1);
+            this.pn_gravar.Controls.Add(this.button2);
             this.pn_gravar.Controls.Add(this.label1);
             this.pn_gravar.Controls.Add(this.btn_yes);
-            this.pn_gravar.Location = new System.Drawing.Point(30, 43);
+            this.pn_gravar.Location = new System.Drawing.Point(37, 34);
             this.pn_gravar.Name = "pn_gravar";
             this.pn_gravar.Size = new System.Drawing.Size(556, 253);
             this.pn_gravar.TabIndex = 4;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(327, 125);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 67);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Sair";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -104,7 +105,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(620, 379);
             this.panel1.TabIndex = 5;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+           
             // 
             // label4
             // 
@@ -120,8 +121,9 @@
             this.lbl_score.AutoSize = true;
             this.lbl_score.Location = new System.Drawing.Point(229, 43);
             this.lbl_score.Name = "lbl_score";
-            this.lbl_score.Size = new System.Drawing.Size(0, 34);
+            this.lbl_score.Size = new System.Drawing.Size(60, 34);
             this.lbl_score.TabIndex = 4;
+            this.lbl_score.Text = "000";
             // 
             // btn_save
             // 
@@ -157,17 +159,17 @@
             this.tb_name.Size = new System.Drawing.Size(220, 41);
             this.tb_name.TabIndex = 0;
             // 
-            // button2
+            // button1
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(728, 398);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 51);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Sair";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(704, 382);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 67);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Voltar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Gravar
             // 
@@ -176,14 +178,14 @@
             this.BackgroundImage = global::Plat5.Properties.Resources.s4m_ur4i_bg_clouds1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Gravar";
             this.Text = "Gravar";
-            this.Load += new System.EventHandler(this.Gravar_Load);
+            
             this.pn_gravar.ResumeLayout(false);
             this.pn_gravar.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -196,7 +198,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_yes;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pn_gravar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_save;
@@ -206,5 +207,6 @@
         private System.Windows.Forms.Label lbl_score;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

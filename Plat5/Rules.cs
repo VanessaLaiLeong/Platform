@@ -16,5 +16,13 @@ namespace Plat5
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Menu form = new Menu();
+            form.Show();
+
+            this.Hide();
+        }
     }
 }
